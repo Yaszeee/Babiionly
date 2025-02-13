@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 5px #d70040;
+        }
+
+        .message {
+            display: none;
+            font-size: 1.5rem;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px white;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: white;
+            background: #ff4d6d;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 0 10px white;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px white;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: float 4s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            50% { transform: translateY(-100px) scale(1.2); opacity: 0.8; }
+            100% { transform: translateY(-200px) scale(0.8); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Happy Valentine's Day! ❤️</h1>
+        <button class="button" onclick="showMessage()">Click for a Surprise</button>
+        <div class="message" id="valentineMessage">
+            💖 You are special and loved! 💖  
+        </div>
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById('valentineMessage').style.display = 'block';
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            document.body.appendChild(heart);
+
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = window.innerHeight + 'px';
+
+            let size = Math.random() * 20 + 10;
+            heart.style.fontSize = size + 'px';
+
+            let duration = Math.random() * 3 + 2;
+            heart.style.animationDuration = duration + 's';
+
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
